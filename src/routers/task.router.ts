@@ -8,12 +8,10 @@ const taskRepository = new TaskRepositoryImpl();
 taskRouter.post("/tasks", async (req, res, next) => {
   const task: TaskEntity = req.body;
   try {
-    await taskRepository.createTask(task, []);
+    const taskCreated = await taskRepository.createTask(task, []);
     res
       .status(201)
-      .json({
-        message: "success",
-      })
+      .json(taskCreated)
       .send();
   } catch (e: any) {
     next(e);

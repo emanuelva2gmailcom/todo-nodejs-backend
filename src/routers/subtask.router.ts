@@ -8,12 +8,10 @@ const subtaskRepository = new SubtaskRepositoryImpl();
 subtaskRouter.post("/subtasks", async (req, res, next) => {
   const subtask: SubTaskEntity = req.body;
   try {
-    await subtaskRepository.createSubtask(subtask);
+    const subtaskCreated = await subtaskRepository.createSubtask(subtask);
     res
       .status(201)
-      .json({
-        message: "success",
-      })
+      .json(subtaskCreated)
       .send();
   } catch (e: any) {
     next(e);

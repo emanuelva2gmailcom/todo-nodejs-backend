@@ -21,6 +21,6 @@ model Subtasks {
   id      Int     @id @default(autoincrement())
   text    String
   checked Boolean @default(false)
-  task    Tasks?  @relation(fields: [taskId], references: [id])
+  task    Tasks?  @relation(fields: [taskId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   taskId  Int
 }
