@@ -21,8 +21,10 @@ RUN npm install
 
 RUN npx prisma generate
 
-# Run and expose the server on port 3000
-EXPOSE 3000
+# Run and expose the server on port 5000
+EXPOSE 5000
 
-# A command to start the server
-CMD npm start
+# RUN npx prisma migrate dev
+
+# A command to start the server 
+CMD npm run dev

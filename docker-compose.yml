@@ -5,7 +5,7 @@ services:
     container_name: postgres
     hostname: postgres
     ports:
-      - 5432:5432
+      - 2345:5432
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -14,16 +14,15 @@ services:
       - postgres-data:/var/lib/postgresql/data
     restart: unless-stopped
 
-  prisma-postgres-api:
-    stdin_open: true
+  api:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: prisma-postgres-api
+    container_name: api
     depends_on:
       - postgres
     ports:
-      - "3000:3000"
+      - "8000:8000"
     restart: always
 
 volumes:
